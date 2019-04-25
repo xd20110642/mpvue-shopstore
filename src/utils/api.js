@@ -2,7 +2,7 @@
  * @Author: xd 
  * @Date: 2019-04-15 09:50:32 
  * @Last Modified by: xd
- * @Last Modified time: 2019-04-16 10:07:07
+ * @Last Modified time: 2019-04-25 11:37:06
  */
 var Fly = require('flyio/dist/npm/wx')
 var fly = new Fly()
@@ -79,4 +79,15 @@ export function classify(url,data){
             console.log("请求错误")
         });
     })
+}
+
+
+
+
+
+
+
+// 提示封装
+export function Tosat(params) {
+    
 }

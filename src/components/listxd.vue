@@ -5,7 +5,7 @@
          scroll-with-animation
          @scroll="scroll"
          >
-         <div class="item" v-for="(item,index) of items" :key="index">
+         <div class="item" v-for="(item,index) of items" :key="index" @click="jump(index)">
              {{item.title}}
          </div>
        </scroll-view>
@@ -33,6 +33,9 @@ export default {
     methods: {
        scroll(e){
            console.log(e)
+       },
+       jump(key){
+           wx.navigateTo({ url:`/pages/productList/main?id=${key}` });
        }
     },
     created() {  

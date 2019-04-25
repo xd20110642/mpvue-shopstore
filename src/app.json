@@ -6,7 +6,11 @@
     "pages/product/main",
     "pages/me/main",
     "pages/classify/main",
-    "pages/productList/main"
+    "pages/productList/main",
+    "pages/oridder/main",
+    "pages/add/main",
+    "pages/help/main",
+    "pages/addNew/main"
   ],
   "window": {
     "backgroundTextStyle": "light",
