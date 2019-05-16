@@ -22,6 +22,8 @@
         <img src="/static/images/帮助.png" alt=""> <span>我的帮助</span>
         <span>></span>
     </div>
+    <!-- 购买界面 -->
+    <button open-type="getPhoneNumber" lang="zh_CN" @getphonenumber="getphonenumber">获取手机号</button>
     </div>
     
     <!-- 登录界面 -->
@@ -56,6 +58,23 @@ export default {
         },
         jumpHelp(){
              wx.navigateTo({ url: `../help/main` });
+        },
+        bug(){
+            console.log(2)
+            wx.requestPayment({
+            timeStamp: '',
+            nonceStr: '',
+            package: '',
+            signType: 'MD5',
+            paySign: '',
+            success(res) { console.log(res)},
+            fail(res) {console.log(res) }
+                    
+                    
+                    })
+        },
+        getphonenumber(e){
+          
         }
     },
     onLoad(){

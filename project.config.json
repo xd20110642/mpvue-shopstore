@@ -77,14 +77,14 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 6,
 					"name": "收货地址",
 					"pathName": "pages/add/main",
-					"query": "",
+					"query": "id=0",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 7,
 					"name": "新增收货地址",
 					"pathName": "pages/addNew/main",
 					"query": "",

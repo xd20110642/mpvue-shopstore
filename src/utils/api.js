@@ -2,7 +2,7 @@
  * @Author: xd 
  * @Date: 2019-04-15 09:50:32 
  * @Last Modified by: xd
- * @Last Modified time: 2019-04-25 11:37:06
+ * @Last Modified time: 2019-04-25 16:45:03
  */
 var Fly = require('flyio/dist/npm/wx')
 var fly = new Fly()
@@ -88,6 +88,17 @@ export function classify(url,data){
 
 
 // 提示封装
-export function Tosat(params) {
-    
+export function Tosat(note,) {
+    wx.showModal({
+        title: '提示',
+        content: note,
+        showCancel:false,
+        success(res) {
+            if (res.confirm) {
+                console.log('用户点击确定')
+            } else if (res.cancel) {
+                console.log('用户点击取消')
+            }
+        }
+    })
 }

@@ -22,7 +22,9 @@
             </button>
             <!--购买选项卡 -->
             <div class="change">
-
+                    <span @click="less">-</span>
+                    <span>{{num}}</span>
+                    <span @click="add">+</span>
             </div>
         </div>
         <!-- 商品图片展示 -->
@@ -39,7 +41,8 @@ export default {
     data() {
         return {
             productId:null,
-            productMess:null
+            productMess:null,
+            num:0
         }
     },
     // 页面加载
@@ -75,9 +78,20 @@ export default {
         complete: () => {}
       };
     },
-    created() { 
-        
+    methods: {
+        add(){
+            this.num+=1;
+            console.log('jia',this.num)
+        },
+        less(){
+            if(this.num == 0){
+                return;
+            }
+            this.num -=1;
+             console.log('减',this.num)
+        }
     },
+
 
 }
 </script> 
@@ -86,7 +100,7 @@ export default {
     .pr{
          .mess{
         width: 100%;
-        height: 100px;
+        height: 150px;
         text-align: center;
         position: relative;
         border-bottom: 1px solid #ccc;
@@ -135,8 +149,17 @@ export default {
         
         }
         .change{
-            height: 20px; 
-            background-color: red;
+            height:40px;
+            line-height: 40px;
+            display: block; 
+            span{
+                display: inline-block;
+                width: 40px;
+                height: 30px;
+                line-height: 30px;
+                margin-right: 10px;
+            }
+            // background-color: red;
         }
     }
     .product-img{

@@ -35,17 +35,20 @@
     </div>
     <div class="save" @click="save">
         保存
-    </div>
+    </div> 
  </div>
 </template>
 
-<script>
+<script>  
 import store from '../../store.js';
 import addJson from './add.json'
+import {Tosat} from '../../utils/api.js'
+import { mapMutations, mapState } from 'vuex';
 //    const shen=,shi=,qu=
 export default {
     data() {
         return {
+            addMess:store.getters.addVuex,
             userName:'',
             userPhone:null,
             addFamliy:'',
@@ -108,11 +111,44 @@ export default {
         },
         save(){
             if(!this.userName){
-                
+                Tosat("请输入姓名")
+                return;
             }
+            if(!this.userPhone){
+                Tosat("请输入手机号");
+                return;
+            }
+            if(!this.add){
+                Tosat("请选择地址");
+                return;
+            }
+            if(!this.addFamliy){
+                Tosat("请输入详细地址");
+                return;
+            }
+            let obj={
+                userName:this.userName,
+                userPhone:this.userPhone,
+                add:this.add,
+                userFamily:this.userFamily
+            }
+            console.log(obj)
+            store.commit('addNew',obj)
+            wx.navigateBack({
+              delta: 1 //返回的页面数，如果 delta 大于现有页面数，则返回到首页,
+            });
+            // this.addNew(obj) 
         }
     },
     onLoad(){
+
+        // 读取传递过来的参数  如果有参数就修改 就不能默认展示地址
+        let id = this.$root.$mp.query.id
+        if(id){
+           let a=this.addMess[id];
+           this.userName=a.userName
+           this.userPhone=a.userPhone
+        }else{
         // 将省读取出来
         for (let index = 0; index < addJson.length; index++) {
            this.sheng.push(addJson[index].name)
@@ -128,8 +164,11 @@ export default {
         this.multiArray[0]=this.sheng;
         this.multiArray[1]=this.shi;
         this.multiArray[2]=this.qu;
+        }
+       
         // console.log(this.multiArray)
-    }
+    },
+    
 }
 </script>
 
